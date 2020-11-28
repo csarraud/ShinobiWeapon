@@ -2,9 +2,6 @@ package fr.sonkuun.shinobiweapon.entity.kunai;
 
 import javax.annotation.Nonnull;
 
-import fr.sonkuun.shinobiweapon.register.EntityTypeRegister;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.Entity;
@@ -26,8 +23,6 @@ import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.network.NetworkHooks;
 
