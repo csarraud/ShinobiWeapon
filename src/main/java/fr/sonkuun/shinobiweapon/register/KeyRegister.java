@@ -8,10 +8,13 @@ import net.minecraftforge.client.settings.KeyConflictContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class KeyRegister {
+	
 	public static final KeyBinding FIRST_ITEM_POWER = new KeyBinding("Item Power 1", KeyConflictContext.UNIVERSAL, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_J, "Shinobi Weapon Powers");
+	public static final KeyBinding SECOND_ITEM_POWER = new KeyBinding("Item Power 2", KeyConflictContext.UNIVERSAL, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_J, "Shinobi Weapon Powers");
 
 	public static void init() {
 		
 		ClientRegistry.registerKeyBinding(FIRST_ITEM_POWER);
+		ClientRegistry.registerKeyBinding(SECOND_ITEM_POWER);
 	}
 }
