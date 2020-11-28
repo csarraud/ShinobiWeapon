@@ -4,8 +4,8 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public interface IPoweredItem {
 	
-	public void useFirstPower(PlayerEntity player);
-	public void useSecondPower(PlayerEntity player);
+	public boolean useFirstPower(PlayerEntity player);
+	public boolean useSecondPower(PlayerEntity player);
 	
 	
 }
