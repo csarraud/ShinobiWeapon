@@ -1,5 +1,7 @@
 package fr.sonkuun.shinobiweapon.entity.kunai;
 
+import java.util.UUID;
+
 import javax.annotation.Nonnull;
 
 import net.minecraft.block.material.Material;
@@ -12,6 +14,7 @@ import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
@@ -29,6 +32,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public abstract class AbstractKunaiEntity extends ProjectileItemEntity implements IEntityAdditionalSpawnData {
 
 	public LivingEntity thrower;
+	public UUID throwerUUID;
 	private float damage;
 	private boolean isStuckOnBlock;
 	private BlockPos stuckedBlockPosition;
@@ -43,8 +47,10 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 		this(type, thrower, world);
 
 		this.setPosition(startPosition.x, startPosition.y, startPosition.z);
-		
+
+		this.throwerUUID = thrower.getUniqueID();
 		this.thrower = thrower;
+
 		Vec3d look = thrower.getLookVec().mul(new Vec3d(velocity, velocity, velocity));
 		this.setVelocity(look.x, look.y, look.z);
 
@@ -75,7 +81,7 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 	public void onCollideWithPlayer(PlayerEntity player) {
 		if(this.world.isRemote)
 			return;
-		
+
 		if(isStuckOnBlock) {
 			for(ItemStack stack : player.inventory.mainInventory) {
 				if(stack.getItem().equals(this.getDefaultItem()) && stack.getCount() < stack.getMaxStackSize()) {
@@ -84,14 +90,14 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 					break;
 				}
 			}
-			
+
 			if(!this.removed && player.inventory.getFirstEmptyStack() != -1) {
 				player.inventory.add(player.inventory.getFirstEmptyStack(), new ItemStack(getDefaultItem()));
 				this.remove();
 			}
 		}
 	}
-	
+
 	private final int TICKS_PER_SECOND = 20;
 	private final int TICKS_PER_MINUTE = TICKS_PER_SECOND * 60;
 	private final int TICKS_IN_FIVE_MINUTES = TICKS_PER_MINUTE * 5;
@@ -99,17 +105,21 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 	public void tick() {
 
 		if (!this.world.isRemote) {
-			
+
 			if(this.isStuckOnBlock) {
-				
+
 				if(this.ticksOnBlock >= TICKS_IN_FIVE_MINUTES) {
 					this.remove();
 				}
 				this.ticksOnBlock++;
-				
+
 				if(this.world.getBlockState(stuckedBlockPosition).getMaterial().equals(Material.AIR)) {
 					this.isStuckOnBlock = false;
 					this.setNoGravity(false);
+				}
+				
+				if(this.throwerUUID != null && this.thrower == null) {
+					this.thrower = this.world.getPlayerByUuid(this.throwerUUID);
 				}
 			}
 		}
@@ -174,12 +184,13 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 		return raytraceresult;
 	}
 
-	private final String IS_STUCK_ON_BLOCK_NBT = "isstuckonblock";
-	private final String STUCKED_BLOCK_POS_X_NBT = "stuckedblockposx";
-	private final String STUCKED_BLOCK_POS_Y_NBT = "stuckedblockposy";
-	private final String STUCKED_BLOCK_POS_Z_NBT = "stuckedblockposz";
-	private final String TICKS_ON_BLOCK_NBT = "ticksonblock";
-	
+	private final String IS_STUCK_ON_BLOCK_NBT = "is_stuck_onb_lock";
+	private final String STUCKED_BLOCK_POS_X_NBT = "stucked_block_pos_x";
+	private final String STUCKED_BLOCK_POS_Y_NBT = "stucked_block_pos_y";
+	private final String STUCKED_BLOCK_POS_Z_NBT = "stucked_block_pos_z";
+	private final String TICKS_ON_BLOCK_NBT = "ticks_on_block";
+	private final String THROWER_UUID_NBT = "thrower_uuid";
+
 	@Override
 	public void readAdditional(CompoundNBT compound) {
 		this.isStuckOnBlock = compound.getBoolean(IS_STUCK_ON_BLOCK_NBT);
@@ -188,18 +199,26 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 				compound.getDouble(STUCKED_BLOCK_POS_Y_NBT),
 				compound.getDouble(STUCKED_BLOCK_POS_Z_NBT));
 		this.ticksOnBlock = compound.getInt(TICKS_ON_BLOCK_NBT);
-		
+
+		this.throwerUUID = compound.getUniqueId(THROWER_UUID_NBT);
+		this.thrower = this.world.getPlayerByUuid(this.throwerUUID);
+
 		super.readAdditional(compound);
 	}
 
 	@Override
 	public void writeAdditional(CompoundNBT compound) {
+		
 		compound.putBoolean(IS_STUCK_ON_BLOCK_NBT, isStuckOnBlock);
 		compound.putDouble(STUCKED_BLOCK_POS_X_NBT, stuckedBlockPosition.getX());
 		compound.putDouble(STUCKED_BLOCK_POS_Y_NBT, stuckedBlockPosition.getY());
 		compound.putDouble(STUCKED_BLOCK_POS_Z_NBT, stuckedBlockPosition.getZ());
 		compound.putInt(TICKS_ON_BLOCK_NBT, ticksOnBlock);
 		
+		if(this.throwerUUID != null) {
+			compound.putUniqueId(THROWER_UUID_NBT, this.throwerUUID);
+		}
+
 		super.writeAdditional(compound);
 	}
 
