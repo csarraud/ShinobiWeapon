@@ -32,6 +32,9 @@ public class MinatoKunaiEntity extends AbstractKunaiEntity {
 	public void onCollideWithPlayer(PlayerEntity player) {
 		super.onCollideWithPlayer(player);
 		
+		if(this.thrower == null)
+			return;
+		
 		if(this.removed && this.thrower.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).isPresent()) {
 			ShinobiWeaponData shinobiWeaponData = this.thrower.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).orElse(null);
 			shinobiWeaponData.setPlayerIsLookingToMinatoKunai(false);
@@ -48,6 +51,7 @@ public class MinatoKunaiEntity extends AbstractKunaiEntity {
 				if(this.thrower.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).isPresent()) {
 					ShinobiWeaponData shinobiWeaponData = this.thrower.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).orElse(null);
 					shinobiWeaponData.setPlayerIsLookingToMinatoKunai(true, this.getPositionVec());
+					shinobiWeaponData.setMinatoKunaiUUID(this.getUniqueID());
 				}
 				this.setGlowing(true);
 			}
