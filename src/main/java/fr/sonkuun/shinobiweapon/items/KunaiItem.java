@@ -26,14 +26,14 @@ public class KunaiItem extends AbstractKunaiItem {
 	}
 
 	@Override
-	public void useFirstPower(PlayerEntity player) {
+	public boolean useFirstPower(PlayerEntity player) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 
 	@Override
-	public void useSecondPower(PlayerEntity player) {
+	public boolean useSecondPower(PlayerEntity player) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
 }
