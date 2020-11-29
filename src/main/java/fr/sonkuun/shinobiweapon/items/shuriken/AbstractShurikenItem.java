@@ -33,7 +33,7 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 
 		worldIn.playSound((PlayerEntity)null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(),
 				SoundEvents.BLOCK_ANVIL_FALL, SoundCategory.NEUTRAL, 0.5F, 0.4F / (new Random().nextFloat() * 0.4F + 0.8F));
-		playerIn.getCooldownTracker().setCooldown(this, 40);
+		playerIn.getCooldownTracker().setCooldown(this, 20);
 
 		if(!worldIn.isRemote) {
 			final double OFFSET_FROM_PLAYER_EYE = -0.11;
