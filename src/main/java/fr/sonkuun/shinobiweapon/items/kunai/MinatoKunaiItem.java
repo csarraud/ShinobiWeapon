@@ -40,7 +40,7 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 		 * Shinobi Weapon capability is required to using item power
 		 */
 		ShinobiWeaponData shinobiWeaponData = player.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).orElse(null);
-
+		
 		if(shinobiWeaponData == null) {
 			return false;
 		}
@@ -49,8 +49,9 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 			ServerWorld serverWorld = (ServerWorld) player.world;
 			Entity entity = serverWorld.getEntityByUuid(shinobiWeaponData.getMinatoKunaiUUID());
 			
-			if(entity == null)
+			if(entity == null) {
 				return false;
+			}
 			
 			Vec3d kunaiPos = entity.getPositionVec();
 
