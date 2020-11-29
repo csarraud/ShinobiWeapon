@@ -48,7 +48,9 @@ public class ShinobiWeapon
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new ShinobiWeaponPowerListener());
 		
+		ShinobiWeaponPowerListener.init();
 		RegistryHandler.init();
+		
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
