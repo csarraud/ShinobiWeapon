@@ -6,6 +6,7 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 - Throwable weapons :
     - Basic Kunai : this kunai hasn't special power, just throw it on mob to inflict damage.
     - Minato's Kunai : works exactly like basic kunai, but has a special power. Look in this direction after you threw it, then press the first power key bind and you'll be teleported to this position.
+    - Shuriken : this shuriken hasn't special power, just throw it on mob to inflict damage.
 
 - Recipes :
     - Basic Kunai recipe
@@ -13,7 +14,6 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Implement shuriken
 - Implement some sword like weapons
 - Implement Minato's Kunai craft
 
