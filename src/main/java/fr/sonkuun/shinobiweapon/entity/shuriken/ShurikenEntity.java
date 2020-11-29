@@ -26,7 +26,6 @@ public class ShurikenEntity extends AbstractShurikenEntity {
 
 	@Override
 	protected Item getDefaultItem() {
-		// TODO Auto-generated method stub
 		return ItemRegister.SHURIKEN;
 	}
 
