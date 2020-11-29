@@ -2,6 +2,7 @@ package fr.sonkuun.shinobiweapon.register;
 
 import fr.sonkuun.shinobiweapon.renderer.KunaiRenderer;
 import fr.sonkuun.shinobiweapon.renderer.MinatoKunaiRenderer;
+import fr.sonkuun.shinobiweapon.renderer.ShurikenRenderer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,5 +19,6 @@ public class ModelRegister {
 	public static void onModelRegistryEvent(ModelRegistryEvent event) {
 		ModelLoader.addSpecialModel(KunaiRenderer.KUNAI_MODEL_RESOURCE_LOCATION);
 		ModelLoader.addSpecialModel(MinatoKunaiRenderer.MINATO_KUNAI_MODEL_RESOURCE_LOCATION);
+		ModelLoader.addSpecialModel(ShurikenRenderer.SHURIKEN_MODEL_RESOURCE_LOCATION);
 	}
 }
