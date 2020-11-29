@@ -36,4 +36,10 @@ public class KunaiItem extends AbstractKunaiItem {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public void onItemLeftClick(World world, PlayerEntity player) {
+		// TODO Auto-generated method stub
+		
+	}
 }

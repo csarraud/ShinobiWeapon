@@ -123,4 +123,10 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 		return nbAirBlock;
 	}
 
+	@Override
+	public void onItemLeftClick(World world, PlayerEntity player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

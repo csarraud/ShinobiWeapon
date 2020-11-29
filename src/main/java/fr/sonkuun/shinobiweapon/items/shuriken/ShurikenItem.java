@@ -33,4 +33,10 @@ public class ShurikenItem extends AbstractShurikenItem {
 		return ItemRegister.SHURIKEN;
 	}
 
+	@Override
+	public void onItemLeftClick(World world, PlayerEntity player) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

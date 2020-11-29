@@ -10,6 +10,7 @@ import fr.sonkuun.shinobiweapon.register.KeyRegister;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ShinobiWeaponPowerListener {
@@ -41,6 +42,16 @@ public class ShinobiWeaponPowerListener {
 			IPoweredItem poweredItem = (IPoweredItem) event.player.getHeldItemMainhand().getItem();
 			if(poweredItem.useSecondPower(event.player))
 				LAST_POWER_USE_IN_TICKS = 0;
+		}
+		
+	}
+	
+	@SubscribeEvent
+	public void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+		
+		if(event.getItemStack().getItem() instanceof IPoweredItem) {
+			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
+			item.onItemLeftClick(event.getWorld(), event.getPlayer());
 		}
 	}
 
