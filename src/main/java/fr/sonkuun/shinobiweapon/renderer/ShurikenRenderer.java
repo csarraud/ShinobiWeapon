@@ -47,11 +47,11 @@ public class ShurikenRenderer extends EntityRenderer<ShurikenEntity> {
 
 		// rotate to set the pitch and yaw correctly.
 
-		matrixStack.rotate(Vector3f.XP.rotationDegrees(0));
+		matrixStack.rotate(Vector3f.XP.rotationDegrees(110));
 		matrixStack.rotate(Vector3f.YP.rotationDegrees(MathHelper.lerp(partialTicks, shurikenEntity.prevRotationYaw, entityYaw) - 90));
 		matrixStack.rotate(Vector3f.ZP.rotationDegrees(MathHelper.lerp(partialTicks, shurikenEntity.prevRotationPitch, shurikenEntity.rotationPitch) - 45));
 
-		matrixStack.translate(-0.28, -0.05, -0.1);
+		matrixStack.translate(-0.23, -0.4, -0.1);
 
 		matrixStack.scale(SCALE_FACTOR, SCALE_FACTOR, SCALE_FACTOR);
 
