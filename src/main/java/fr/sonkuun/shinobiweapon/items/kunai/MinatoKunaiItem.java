@@ -7,12 +7,14 @@ import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
 import fr.sonkuun.shinobiweapon.register.ItemRegister;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -55,6 +57,10 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 			
 			Vec3d kunaiPos = entity.getPositionVec();
 
+			if(!hasAirBlockAround(entity)) {
+				return false;
+			}
+			
 			/*
 			 * Refill item in player inventory if not full
 			 */
@@ -81,6 +87,40 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 	@Override
 	public boolean useSecondPower(PlayerEntity player) {
 		return false;
+	}
+	
+	public boolean hasAirBlockAround(Entity entity) {
+		int nbAirBlock = 0;
+		BlockPos pos = entity.getPosition();
+		
+		/* UP LAYER */
+		nbAirBlock += numberAirBlockInLayer(pos.up(), entity.world);
+		
+		/* MID LAYER */
+		nbAirBlock += numberAirBlockInLayer(pos, entity.world);
+		
+		/* DOWN LAYER */
+		nbAirBlock += numberAirBlockInLayer(pos.down(), entity.world);
+		
+		return nbAirBlock >= 3;
+	}
+	
+	public int numberAirBlockInLayer(BlockPos pos, World world) {
+		int nbAirBlock = 0;
+		
+		nbAirBlock = world.getBlockState(pos.north().west()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos.north()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos.north().east()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		
+		nbAirBlock = world.getBlockState(pos.west()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos.east()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		
+		nbAirBlock = world.getBlockState(pos.south().west()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos.south()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+		nbAirBlock = world.getBlockState(pos.south().east()).isSolid() ? nbAirBlock : nbAirBlock + 1;
+
+		return nbAirBlock;
 	}
 
 }
