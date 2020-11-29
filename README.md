@@ -21,3 +21,4 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 - Fix the render orientation problem when throwable weapon are stuck on block
 - Cancel teleportation if there is no air block around the Minato's Kunai
+- Fix after reloading server kunai doesn't change glowing state but teleport works
