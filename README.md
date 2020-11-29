@@ -11,6 +11,7 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 - Recipes :
     - Basic Kunai recipe
     - For the moment, Minato's Kunai can't be crafted
+    - Shuriken recipe
 
 # TO DO
 
