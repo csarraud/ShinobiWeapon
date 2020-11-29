@@ -1,4 +1,4 @@
-package fr.sonkuun.shinobiweapon.items.kunai;
+package fr.sonkuun.shinobiweapon.items;
 
 import net.minecraft.entity.player.PlayerEntity;
 

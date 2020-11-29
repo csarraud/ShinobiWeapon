@@ -4,7 +4,7 @@ import java.util.Random;
 
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.shuriken.AbstractShurikenEntity;
-import fr.sonkuun.shinobiweapon.items.kunai.IPoweredItem;
+import fr.sonkuun.shinobiweapon.items.IPoweredItem;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

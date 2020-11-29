@@ -5,7 +5,7 @@ import java.util.HashMap;
 import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
 import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
-import fr.sonkuun.shinobiweapon.items.kunai.IPoweredItem;
+import fr.sonkuun.shinobiweapon.items.IPoweredItem;
 import fr.sonkuun.shinobiweapon.register.KeyRegister;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
