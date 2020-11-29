@@ -184,7 +184,7 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 		return raytraceresult;
 	}
 
-	private final String IS_STUCK_ON_BLOCK_NBT = "is_stuck_onb_lock";
+	private final String IS_STUCK_ON_BLOCK_NBT = "is_stuck_on_block";
 	private final String STUCKED_BLOCK_POS_X_NBT = "stucked_block_pos_x";
 	private final String STUCKED_BLOCK_POS_Y_NBT = "stucked_block_pos_y";
 	private final String STUCKED_BLOCK_POS_Z_NBT = "stucked_block_pos_z";
