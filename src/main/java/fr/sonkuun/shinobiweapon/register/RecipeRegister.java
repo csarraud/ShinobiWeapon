@@ -25,7 +25,7 @@ public class RecipeRegister {
 			() -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 	
 	public static void init() {
-		
+		RECIPE_SERIALIZERS.register("shuriken", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 	}
 
 	private static class RecipeType<T extends IRecipe<?>> implements IRecipeType<T> {
