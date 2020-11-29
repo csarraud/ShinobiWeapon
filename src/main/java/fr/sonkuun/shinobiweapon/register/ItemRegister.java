@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.sonkuun.shinobiweapon.ShinobiWeapon;
-import fr.sonkuun.shinobiweapon.items.KunaiItem;
-import fr.sonkuun.shinobiweapon.items.MinatoKunaiItem;
+import fr.sonkuun.shinobiweapon.items.kunai.KunaiItem;
+import fr.sonkuun.shinobiweapon.items.kunai.MinatoKunaiItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

@@ -1,6 +1,6 @@
 package fr.sonkuun.shinobiweapon.listener;
 
-import fr.sonkuun.shinobiweapon.items.IPoweredItem;
+import fr.sonkuun.shinobiweapon.items.kunai.IPoweredItem;
 import fr.sonkuun.shinobiweapon.register.KeyRegister;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

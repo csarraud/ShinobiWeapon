@@ -1,4 +1,4 @@
-package fr.sonkuun.shinobiweapon.items;
+package fr.sonkuun.shinobiweapon.items.kunai;
 
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.kunai.KunaiEntity;
