@@ -2,6 +2,7 @@ package fr.sonkuun.shinobiweapon;
 
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.entity.EntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,11 +23,13 @@ import fr.sonkuun.shinobiweapon.capability.CapabilityAttachEventHandler;
 import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
 import fr.sonkuun.shinobiweapon.entity.kunai.KunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
+import fr.sonkuun.shinobiweapon.entity.shuriken.ShurikenEntity;
 import fr.sonkuun.shinobiweapon.listener.ShinobiWeaponPowerListener;
 import fr.sonkuun.shinobiweapon.register.EntityTypeRegister;
 import fr.sonkuun.shinobiweapon.register.RegistryHandler;
 import fr.sonkuun.shinobiweapon.renderer.KunaiRenderer;
 import fr.sonkuun.shinobiweapon.renderer.MinatoKunaiRenderer;
+import fr.sonkuun.shinobiweapon.renderer.ShurikenRenderer;
 
 import java.util.stream.Collectors;
 
@@ -65,7 +68,7 @@ public class ShinobiWeapon
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityTypeRegister.KUNAI, new KunaiRenderFactory());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTypeRegister.MINATO_KUNAI, new MinatoKunaiRenderFactory());
-
+		RenderingRegistry.registerEntityRenderingHandler(EntityTypeRegister.SHURIKEN, new ShurikenRenderFactory());
 	}
 
 	private static class KunaiRenderFactory implements IRenderFactory<KunaiEntity> {
@@ -79,6 +82,13 @@ public class ShinobiWeapon
 		@Override
 		public EntityRenderer<MinatoKunaiEntity> createRenderFor(EntityRendererManager manager) {
 			return new MinatoKunaiRenderer(manager);
+		}
+	}
+	
+	private static class ShurikenRenderFactory implements IRenderFactory<ShurikenEntity> {
+		@Override
+		public EntityRenderer<? super ShurikenEntity> createRenderFor(EntityRendererManager manager) {
+			return new ShurikenRenderer(manager);
 		}
 	}
 
