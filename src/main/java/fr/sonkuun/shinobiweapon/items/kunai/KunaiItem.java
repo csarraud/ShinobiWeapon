@@ -6,6 +6,9 @@ import fr.sonkuun.shinobiweapon.register.ItemRegister;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.world.World;
 
 public class KunaiItem extends AbstractKunaiItem {
@@ -38,8 +41,8 @@ public class KunaiItem extends AbstractKunaiItem {
 	}
 
 	@Override
-	public void onItemLeftClick(World world, PlayerEntity player) {
+	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player) {
 		// TODO Auto-generated method stub
-		
+		return new ActionResult<ItemStack>(ActionResultType.FAIL, player.getHeldItemMainhand());
 	}
 }

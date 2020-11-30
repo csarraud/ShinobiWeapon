@@ -10,6 +10,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -120,9 +122,9 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 	}
 
 	@Override
-	public void onItemLeftClick(World world, PlayerEntity player) {
+	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player) {
 		// TODO Auto-generated method stub
-		
+		return new ActionResult<ItemStack>(ActionResultType.FAIL, player.getHeldItemMainhand());
 	}
 
 }

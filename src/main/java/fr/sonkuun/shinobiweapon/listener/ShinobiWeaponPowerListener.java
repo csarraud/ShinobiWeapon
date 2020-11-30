@@ -51,7 +51,9 @@ public class ShinobiWeaponPowerListener {
 		
 		if(event.getItemStack().getItem() instanceof IPoweredItem) {
 			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
-			item.onItemLeftClick(event.getWorld(), event.getPlayer());
+			if(item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType().isSuccess()) {
+				event.setCanceled(true);
+			}
 		}
 	}
 
