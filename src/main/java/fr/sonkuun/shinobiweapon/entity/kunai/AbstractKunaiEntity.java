@@ -33,10 +33,10 @@ public abstract class AbstractKunaiEntity extends ProjectileItemEntity implement
 
 	public LivingEntity thrower;
 	public UUID throwerUUID;
-	private float damage;
-	private boolean isStuckOnBlock;
-	private BlockPos stuckedBlockPosition;
-	private int ticksOnBlock;
+	public float damage;
+	public boolean isStuckOnBlock;
+	public BlockPos stuckedBlockPosition;
+	public int ticksOnBlock;
 
 	private Entity ignoreEntity;
 	private int ignoreTime;
