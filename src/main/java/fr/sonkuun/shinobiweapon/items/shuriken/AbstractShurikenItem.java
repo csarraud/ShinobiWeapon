@@ -47,6 +47,11 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
 	}
 	
+	@Override
+	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player) {
+		return onItemRightClick(world, player, player.getActiveHand());
+	}
+
 	public abstract AbstractShurikenEntity createShurikenEntity(World world, PlayerEntity thrower,
 			Vector3d startPosition, float rotationYaw, float rotationPitch, double velocity);
 	
