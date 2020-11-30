@@ -1,14 +1,10 @@
 package fr.sonkuun.shinobiweapon.items.kunai;
 
-import java.util.UUID;
-
 import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
 import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
 import fr.sonkuun.shinobiweapon.register.ItemRegister;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

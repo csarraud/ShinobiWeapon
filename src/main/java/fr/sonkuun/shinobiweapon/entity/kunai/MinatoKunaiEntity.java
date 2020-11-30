@@ -1,7 +1,5 @@
 package fr.sonkuun.shinobiweapon.entity.kunai;
 
-import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
-import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.listener.ShinobiWeaponPowerListener;
 import fr.sonkuun.shinobiweapon.register.EntityTypeRegister;
 import fr.sonkuun.shinobiweapon.register.ItemRegister;
@@ -11,7 +9,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class MinatoKunaiEntity extends AbstractKunaiEntity {
