@@ -47,13 +47,20 @@ public class ShinobiWeaponPowerListener {
 	}
 	
 	@SubscribeEvent
-	public void onLeftClick(PlayerInteractEvent.LeftClickEmpty event) {
+	public void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
 		
 		if(event.getItemStack().getItem() instanceof IPoweredItem) {
 			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
-			if(item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType().isSuccess()) {
-				event.setCanceled(true);
-			}
+			item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType();
+		}
+	}
+	
+	@SubscribeEvent
+	public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+		
+		if(event.getItemStack().getItem() instanceof IPoweredItem && !event.getWorld().isRemote) {
+			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
+			item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType();
 		}
 	}
 
