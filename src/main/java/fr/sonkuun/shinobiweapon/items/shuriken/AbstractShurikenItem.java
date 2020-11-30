@@ -49,7 +49,7 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 	
 	@Override
 	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player) {
-		return onItemRightClick(world, player, player.getActiveHand());
+		return onItemRightClick(world, player, Hand.MAIN_HAND);
 	}
 
 	public abstract AbstractShurikenEntity createShurikenEntity(World world, PlayerEntity thrower,
