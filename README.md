@@ -8,6 +8,9 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
     - Minato's Kunai : works exactly like basic kunai, but has a special power. Look in this direction after you threw it, then press the first power key bind and you'll be teleported to this position.
     - Shuriken : this shuriken hasn't special power, just throw it on mob to inflict damage.
 
+- Sword-like weapons :
+	- Jashin Scythe : no special power for the moment.
+
 - Recipes :
     - Basic Kunai recipe
     - For the moment, Minato's Kunai can't be crafted
@@ -15,7 +18,8 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Implement Samehada, Jashin Hoe and other sword like weapons
+- Implements Jashin Scythe power
+- Implement Samehada and other sword like weapons
 - Implement Minato's Kunai craft
 - Implement Chakra Blade kunai
 
