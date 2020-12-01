@@ -15,7 +15,6 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Change shuriken usage when left click, can only be thrown
 - Implement Samehada, Jashin Hoe and other sword like weapons
 - Implement Minato's Kunai craft
 - Implement Chakra Blade kunai
