@@ -36,7 +36,7 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 		if(!worldIn.isRemote) {
 			final double OFFSET_FROM_PLAYER_EYE = -0.11;
 			Vector3d startPosition = new Vector3d(playerIn.getPosX(), playerIn.getPosYEye() + OFFSET_FROM_PLAYER_EYE, playerIn.getPosZ());
-			double velocity = 1.0;
+			double velocity = 1.5;
 			
 			AbstractShurikenEntity shuriken = createShurikenEntity(worldIn, playerIn, startPosition,
 					playerIn.rotationYaw, playerIn.rotationPitch, velocity);
