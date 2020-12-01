@@ -45,24 +45,6 @@ public class ShinobiWeaponPowerListener {
 		}
 		
 	}
-	
-	@SubscribeEvent
-	public void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-		
-		if(event.getItemStack().getItem() instanceof IPoweredItem) {
-			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
-			item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType();
-		}
-	}
-	
-	@SubscribeEvent
-	public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-		
-		if(event.getItemStack().getItem() instanceof IPoweredItem && !event.getWorld().isRemote) {
-			IPoweredItem item = (IPoweredItem) event.getItemStack().getItem();
-			item.onItemLeftClick(event.getWorld(), event.getPlayer()).getType();
-		}
-	}
 
 	public boolean isCooldownValid() {
 		return LAST_POWER_USE_IN_TICKS >= POWER_COOLDOWN_DURATION_IN_TICKS;

@@ -9,6 +9,4 @@ public interface IPoweredItem {
 	
 	public boolean useFirstPower(PlayerEntity player);
 	public boolean useSecondPower(PlayerEntity player);
-	
-	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player);
 }

@@ -120,11 +120,4 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 
 		return nbAirBlock;
 	}
-
-	@Override
-	public ActionResult<ItemStack> onItemLeftClick(World world, PlayerEntity player) {
-		// TODO Auto-generated method stub
-		return new ActionResult<ItemStack>(ActionResultType.FAIL, player.getHeldItemMainhand());
-	}
-
 }
