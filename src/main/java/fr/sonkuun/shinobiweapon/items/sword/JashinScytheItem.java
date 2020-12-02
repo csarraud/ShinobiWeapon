@@ -25,6 +25,10 @@ public class JashinScytheItem extends AbstractSwordItem {
 	
 	@Override
 	public boolean useFirstPower(PlayerEntity player) {
+		if(this.ritualIsReady) {
+			return false;
+		}
+		
 		this.ritualIsReady = true;
 		return true;
 	}
