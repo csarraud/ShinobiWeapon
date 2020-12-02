@@ -9,18 +9,17 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
     - Shuriken : this shuriken hasn't special power, just throw it on mob to inflict damage.
 
 - Sword-like weapons :
-	- Jashin Scythe : no special power for the moment.
+	- Jashin Scythe : use the first power to start a ritual with the last living entity you have hurt. Every damage you'll take, the living entity will take the same amount of damage.
 
 - Recipes :
     - Basic Kunai recipe
-    - For the moment, Minato's Kunai can't be crafted
     - Shuriken recipe
 
 # TO DO
 
-- Implements Jashin Scythe power
 - Implement Samehada and other sword like weapons
 - Implement Minato's Kunai craft
+- Implement Jashin Scythe craft
 - Implement Chakra Blade kunai
 
 # Fix
