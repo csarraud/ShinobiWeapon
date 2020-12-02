@@ -25,8 +25,8 @@ public class JashinScytheItem extends AbstractSwordItem {
 	
 	@Override
 	public boolean useFirstPower(PlayerEntity player) {
-		// TODO Auto-generated method stub
-		return false;
+		this.ritualIsReady = true;
+		return true;
 	}
 
 	@Override
@@ -47,6 +47,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 		
 		if(ritualEntity == null) {
 			ritualEntityUUID = null;
+			ritualIsReady = false;
 			return;
 		}
 		
@@ -54,6 +55,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 		
 		if(!ritualEntity.isAlive()) {
 			ritualEntityUUID = null;
+			ritualIsReady = false;
 		}
 	}
 	
