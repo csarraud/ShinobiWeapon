@@ -10,4 +10,5 @@ public interface IPoweredItem {
 	
 	public void playerDamagedLivingEntity(LivingDamageEvent event);
 	public void livingEntityDamagedPlayer(LivingDamageEvent event);
+	public void environmentDamagedPlayer(LivingDamageEvent event);
 }

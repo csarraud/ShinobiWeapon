@@ -58,6 +58,11 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 	public void livingEntityDamagedPlayer(LivingDamageEvent event) {
 		
 	}
+	
+	@Override
+	public void environmentDamagedPlayer(LivingDamageEvent event) {
+		
+	}
 
 	public abstract AbstractShurikenEntity createShurikenEntity(World world, PlayerEntity thrower,
 			Vector3d startPosition, float rotationYaw, float rotationPitch, double velocity);

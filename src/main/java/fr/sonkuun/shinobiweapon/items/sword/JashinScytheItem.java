@@ -35,13 +35,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 		return false;
 	}
 	
-	@Override
-	public void livingEntityDamagedPlayer(LivingDamageEvent event) {
-		if(ritualEntityUUID == null || !ritualIsReady
-				|| !(event.getEntity().world instanceof ServerWorld)) {
-			return;
-		}
-		
+	public void proceedRitual(LivingDamageEvent event) {
 		ServerWorld world = (ServerWorld) event.getEntity().world;
 		LivingEntity ritualEntity = (LivingEntity) world.getEntityByUuid(ritualEntityUUID);
 		
@@ -57,6 +51,26 @@ public class JashinScytheItem extends AbstractSwordItem {
 			ritualEntityUUID = null;
 			ritualIsReady = false;
 		}
+	}
+	
+	@Override
+	public void livingEntityDamagedPlayer(LivingDamageEvent event) {
+		if(ritualEntityUUID == null || !ritualIsReady
+				|| !(event.getEntity().world instanceof ServerWorld)) {
+			return;
+		}
+		
+		proceedRitual(event);
+	}
+	
+	@Override
+	public void environmentDamagedPlayer(LivingDamageEvent event) {
+		if(ritualEntityUUID == null || !ritualIsReady
+				|| !(event.getEntity().world instanceof ServerWorld)) {
+			return;
+		}
+		
+		proceedRitual(event);
 	}
 	
 	@Override

@@ -76,6 +76,15 @@ public class ShinobiWeaponPowerListener {
 				((IPoweredItem) held).livingEntityDamagedPlayer(event);
 			}
 		}
+		/* Player has take damage by the environment */
+		else if(victim instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) victim;
+			Item held = player.getHeldItemMainhand().getItem();
+			
+			if(held instanceof IPoweredItem) {
+				((IPoweredItem) held).environmentDamagedPlayer(event);
+			}
+		}
 	}
 
 	public boolean isCooldownValid() {

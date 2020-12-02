@@ -59,6 +59,11 @@ public abstract class AbstractKunaiItem extends Item implements IPoweredItem {
 	public void livingEntityDamagedPlayer(LivingDamageEvent event) {
 		
 	}
+	
+	@Override
+	public void environmentDamagedPlayer(LivingDamageEvent event) {
+		
+	}
 
 	public abstract AbstractKunaiEntity createKunaiEntity(World world, PlayerEntity thrower,
 			Vector3d startPosition, float rotationYaw, float rotationPitch, double velocity);
