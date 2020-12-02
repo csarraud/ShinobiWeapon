@@ -5,6 +5,7 @@ import java.util.Random;
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
 import fr.sonkuun.shinobiweapon.items.IPoweredItem;
 import net.minecraft.client.renderer.Vector3d;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -16,6 +17,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public abstract class AbstractKunaiItem extends Item implements IPoweredItem {
 	
@@ -46,6 +48,11 @@ public abstract class AbstractKunaiItem extends Item implements IPoweredItem {
 		
 		playerIn.addStat(Stats.ITEM_USED.get(getItem()));
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
+	}
+	
+	@Override
+	public void damageLivingEntity(LivingDamageEvent event) {
+		
 	}
 	
 	public abstract AbstractKunaiEntity createKunaiEntity(World world, PlayerEntity thrower,

@@ -1,14 +1,14 @@
 package fr.sonkuun.shinobiweapon.items.sword;
 
 import fr.sonkuun.shinobiweapon.items.IPoweredItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemTier;
+import net.minecraft.item.SwordItem;
 
-public abstract class AbstractSwordItem extends Item implements IPoweredItem {
+public abstract class AbstractSwordItem extends SwordItem implements IPoweredItem {
 
-	public AbstractSwordItem() {
-		super(new Properties().group(ItemGroup.COMBAT).maxStackSize(1));
+	public AbstractSwordItem(int maxDamage, float attackDamage) {
+		super(ItemTier.DIAMOND, maxDamage, attackDamage, new Properties().group(ItemGroup.COMBAT).maxStackSize(1));
 	}
-
 	
 }

@@ -7,9 +7,16 @@ import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
 import fr.sonkuun.shinobiweapon.items.IPoweredItem;
 import fr.sonkuun.shinobiweapon.register.KeyRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -44,6 +51,26 @@ public class ShinobiWeaponPowerListener {
 				LAST_POWER_USE_IN_TICKS = 0;
 		}
 		
+	}
+	
+	@SubscribeEvent
+	public void onEntityIsHurted(LivingDamageEvent event) {
+		DamageSource source = event.getSource();
+		LivingEntity victim = event.getEntityLiving();
+		
+		/* Player damage living entity */
+		if(source.getTrueSource() instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) source.getTrueSource();
+			Item held = player.getHeldItemMainhand().getItem();
+			
+			if(held instanceof IPoweredItem) {
+				((IPoweredItem) held).damageLivingEntity(event);
+			}
+		}
+		/* Living entity damage player*/
+		else if(source.getTrueSource() instanceof LivingEntity && victim instanceof PlayerEntity) {
+			
+		}
 	}
 
 	public boolean isCooldownValid() {
