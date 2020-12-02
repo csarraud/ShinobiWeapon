@@ -9,4 +9,5 @@ public interface IPoweredItem {
 	public boolean useSecondPower(PlayerEntity player);
 	
 	public void damageLivingEntity(LivingDamageEvent event);
+	public void LivingEntityDamagedPlayer(LivingDamageEvent event);
 }

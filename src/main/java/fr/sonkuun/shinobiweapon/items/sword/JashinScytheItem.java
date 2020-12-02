@@ -32,6 +32,11 @@ public class JashinScytheItem extends AbstractSwordItem {
 	}
 	
 	@Override
+	public void LivingEntityDamagedPlayer(LivingDamageEvent event) {
+		
+	}
+	
+	@Override
 	public void damageLivingEntity(LivingDamageEvent event) {
 		LivingEntity entity = event.getEntityLiving();
 		ritualEntityUUID = entity.getUniqueID();
