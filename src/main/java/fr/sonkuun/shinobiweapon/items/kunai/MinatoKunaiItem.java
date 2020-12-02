@@ -32,6 +32,14 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 		return ItemRegister.MINATO_KUNAI;
 	}
 
+	/*
+	 * ========== FIRST POWER ==========
+	 * When using Minato's Kunai first power, the player will be teleport
+	 * at the position of the kunai he is looking.
+	 * If the player isn't looking to a kunai, nothing happen.
+	 * 
+	 * The kunai need at less 3 air block around to valid teleportation.
+	 */
 	@Override
 	public boolean useFirstPower(PlayerEntity player) {
 		/*
