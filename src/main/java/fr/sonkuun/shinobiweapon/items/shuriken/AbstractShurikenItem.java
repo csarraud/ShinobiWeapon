@@ -50,12 +50,12 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 	}
 	
 	@Override
-	public void damageLivingEntity(LivingDamageEvent event) {
+	public void playerDamagedLivingEntity(LivingDamageEvent event) {
 		
 	}
 	
 	@Override
-	public void LivingEntityDamagedPlayer(LivingDamageEvent event) {
+	public void livingEntityDamagedPlayer(LivingDamageEvent event) {
 		
 	}
 
