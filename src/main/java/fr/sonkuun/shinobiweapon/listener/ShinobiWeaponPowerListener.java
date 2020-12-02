@@ -69,7 +69,12 @@ public class ShinobiWeaponPowerListener {
 		}
 		/* Living entity damage player*/
 		else if(source.getTrueSource() instanceof LivingEntity && victim instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) victim;
+			Item held = player.getHeldItemMainhand().getItem();
 			
+			if(held instanceof IPoweredItem) {
+				((IPoweredItem) held).livingEntityDamagedPlayer(event);
+			}
 		}
 	}
 
