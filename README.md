@@ -10,7 +10,9 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 
 - Sword-like weapons :
-    - Jashin Scythe : use the first power to start a ritual with the last living entity you have hurt. Every damage you'll take, the living entity will take the same amount of damage.
+    - Jashin Scythe :
+        - First power : start a ritual with the last living entity you have hurt. Every damage you'll take, the living entity will take the same amount of damage. 
+      - Second power : sacrifice 90% of your actual health to damage the last living entity you've hurt by this amount * 2.
 	
 
 - Recipes :
