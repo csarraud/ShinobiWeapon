@@ -19,7 +19,7 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Add particles effects for Jashin ritual
+- Find how to inform player that the ritual has started
 - Implement Samehada and other sword like weapons
 - Implement Minato's Kunai craft
 - Implement Jashin Scythe craft
