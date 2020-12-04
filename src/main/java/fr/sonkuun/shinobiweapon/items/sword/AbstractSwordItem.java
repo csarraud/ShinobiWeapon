@@ -8,8 +8,26 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public abstract class AbstractSwordItem extends SwordItem implements IPoweredItem {
 
+	public long firstPowerLastUseInTicks;
+	public long secondPowerLastUseInTicks;
+	
+	public long firstPowerCooldownInTicks;
+	public long secondPowerCooldownInTicks;
+	
 	public AbstractSwordItem(int maxDamage, float attackDamage) {
 		super(ItemTier.DIAMOND, maxDamage, attackDamage, new Properties().group(ItemGroup.COMBAT).maxStackSize(1));
+		
+		this.firstPowerLastUseInTicks = 0;
+		this.secondPowerLastUseInTicks = 0;
+		
+		this.firstPowerCooldownInTicks = 0;
+		this.secondPowerCooldownInTicks = 0;
+	}
+
+	@Override
+	public void updatePowerTicks() {
+		this.firstPowerLastUseInTicks++;
+		this.secondPowerLastUseInTicks++;		
 	}
 
 	@Override

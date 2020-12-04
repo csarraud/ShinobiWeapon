@@ -8,6 +8,11 @@ public interface IPoweredItem {
 	public boolean useFirstPower(PlayerEntity player);
 	public boolean useSecondPower(PlayerEntity player);
 	
+	public void updatePowerTicks();
+	
+	public boolean canUseFirstPower();
+	public boolean canUseSecondPower();
+	
 	public void playerDamagedLivingEntity(LivingDamageEvent event);
 	public void livingEntityDamagedPlayer(LivingDamageEvent event);
 	public void environmentDamagedPlayer(LivingDamageEvent event);

@@ -18,9 +18,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ShinobiWeaponPowerListener {
 
-	public static long POWER_COOLDOWN_DURATION_IN_TICKS = 20;
-	public static long LAST_POWER_USE_IN_TICKS = 0;
-
 	public static HashMap<String, MinatoKunaiEntity> MINATO_KUNAI_ENTITIES_MAP;
 
 	public static void init() {
@@ -31,34 +28,32 @@ public class ShinobiWeaponPowerListener {
 	public void playerTick(PlayerTickEvent event) {
 
 		updatePlayerLookingAtMinatoKunai(event);
-
-		LAST_POWER_USE_IN_TICKS += 1;
-
-		if(KeyRegister.FIRST_ITEM_POWER.isKeyDown() && isCooldownValid()
-				&& event.player.getHeldItemMainhand().getItem() instanceof IPoweredItem) {
-			IPoweredItem poweredItem = (IPoweredItem) event.player.getHeldItemMainhand().getItem();
-			if(poweredItem.useFirstPower(event.player))
-				LAST_POWER_USE_IN_TICKS = 0;
-		}
-		else if(KeyRegister.SECOND_ITEM_POWER.isKeyDown() && isCooldownValid()
-				&& event.player.getHeldItemMainhand().getItem() instanceof IPoweredItem) {
-			IPoweredItem poweredItem = (IPoweredItem) event.player.getHeldItemMainhand().getItem();
-			if(poweredItem.useSecondPower(event.player))
-				LAST_POWER_USE_IN_TICKS = 0;
-		}
 		
+		if(event.player.getHeldItemMainhand().getItem() instanceof IPoweredItem) {
+			IPoweredItem poweredItem = (IPoweredItem) event.player.getHeldItemMainhand().getItem();
+			
+			if(KeyRegister.FIRST_ITEM_POWER.isKeyDown() && poweredItem.canUseFirstPower()) {
+				poweredItem.useFirstPower(event.player);
+			}
+			else if(KeyRegister.SECOND_ITEM_POWER.isKeyDown() && poweredItem.canUseSecondPower()) {
+				poweredItem.useSecondPower(event.player);
+			}
+			
+			if(event.side.isServer())
+				poweredItem.updatePowerTicks();
+		}
 	}
 	
 	@SubscribeEvent
 	public void onEntityIsHurted(LivingDamageEvent event) {
 		DamageSource source = event.getSource();
 		LivingEntity victim = event.getEntityLiving();
-		
+
 		/* Player damage living entity */
 		if(source.getTrueSource() instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) source.getTrueSource();
 			Item held = player.getHeldItemMainhand().getItem();
-			
+
 			if(held instanceof IPoweredItem) {
 				((IPoweredItem) held).playerDamagedLivingEntity(event);
 			}
@@ -67,7 +62,7 @@ public class ShinobiWeaponPowerListener {
 		else if(source.getTrueSource() instanceof LivingEntity && victim instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) victim;
 			Item held = player.getHeldItemMainhand().getItem();
-			
+
 			if(held instanceof IPoweredItem) {
 				((IPoweredItem) held).livingEntityDamagedPlayer(event);
 			}
@@ -76,28 +71,24 @@ public class ShinobiWeaponPowerListener {
 		else if(victim instanceof PlayerEntity) {
 			PlayerEntity player = (PlayerEntity) victim;
 			Item held = player.getHeldItemMainhand().getItem();
-			
+
 			if(held instanceof IPoweredItem) {
 				((IPoweredItem) held).environmentDamagedPlayer(event);
 			}
 		}
 	}
 
-	public boolean isCooldownValid() {
-		return LAST_POWER_USE_IN_TICKS >= POWER_COOLDOWN_DURATION_IN_TICKS;
-	}
-
 	public void updatePlayerLookingAtMinatoKunai(PlayerTickEvent event) {
 		double distance = 10.0d;
 		PlayerEntity player = event.player;
-		
+
 		if(!player.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).isPresent()) {
 			return;
 		}
-		
+
 		ShinobiWeaponData shinobiWeaponData = player.getCapability(CapabilityShinobiWeapon.CAPABILITY_SHINOBI_WEAPON).orElse(null);
 		shinobiWeaponData.setPlayerIsLookingToMinatoKunai(false);
-		
+
 		for(MinatoKunaiEntity kunai : MINATO_KUNAI_ENTITIES_MAP.values()) {
 			if(throwerLookInEntityDirection(player.getLookVec(), player.getEyePosition(0.5f), kunai.getPositionVec(), distance)) {
 

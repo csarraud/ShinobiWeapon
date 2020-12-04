@@ -19,6 +19,11 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 
 	public MinatoKunaiItem() {
 		super();
+		
+		int TICKS_IN_ONE_SECOND = 20;
+		
+		this.firstPowerCooldownInTicks = 3 * TICKS_IN_ONE_SECOND;
+		this.secondPowerCooldownInTicks = 30 * TICKS_IN_ONE_SECOND;
 	}
 
 	@Override
@@ -82,6 +87,8 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 			}
 			
 			player.setPositionAndUpdate(kunaiPos.x, kunaiPos.y, kunaiPos.z);
+			
+			this.firstPowerLastUseInTicks = 0;
 			return true;
 		}
 		

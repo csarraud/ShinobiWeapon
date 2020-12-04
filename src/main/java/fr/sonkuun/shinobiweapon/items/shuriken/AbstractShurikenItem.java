@@ -18,9 +18,21 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public abstract class AbstractShurikenItem extends Item implements IPoweredItem {
+
+	public long firstPowerLastUseInTicks;
+	public long secondPowerLastUseInTicks;
+	
+	public long firstPowerCooldownInTicks;
+	public long secondPowerCooldownInTicks;
 	
 	public AbstractShurikenItem() {
 		super(new Properties().group(ItemGroup.COMBAT));
+
+		this.firstPowerLastUseInTicks = 0;
+		this.secondPowerLastUseInTicks = 0;
+		
+		this.firstPowerCooldownInTicks = 0;
+		this.secondPowerCooldownInTicks = 0;
 	}
 
 	@Override
@@ -46,6 +58,22 @@ public abstract class AbstractShurikenItem extends Item implements IPoweredItem 
 		
 		playerIn.addStat(Stats.ITEM_USED.get(getItem()));
 		return new ActionResult<ItemStack>(ActionResultType.SUCCESS, stack);
+	}
+
+	@Override
+	public void updatePowerTicks() {
+		this.firstPowerLastUseInTicks++;
+		this.secondPowerLastUseInTicks++;		
+	}
+
+	@Override
+	public boolean canUseFirstPower() {
+		return this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks;
+	}
+
+	@Override
+	public boolean canUseSecondPower() {
+		return this.secondPowerLastUseInTicks >= this.secondPowerCooldownInTicks;
 	}
 	
 	@Override

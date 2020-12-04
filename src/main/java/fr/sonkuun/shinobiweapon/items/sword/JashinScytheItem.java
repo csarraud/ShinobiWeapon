@@ -21,6 +21,11 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 		this.ritualEntityUUID = null;
 		this.ritualIsReady = false;
+		
+		int TICKS_IN_ONE_SECOND = 20;
+		
+		this.firstPowerCooldownInTicks = 10 * TICKS_IN_ONE_SECOND;
+		this.secondPowerCooldownInTicks = 30 * TICKS_IN_ONE_SECOND;
 	}
 
 	@Override
@@ -30,6 +35,8 @@ public class JashinScytheItem extends AbstractSwordItem {
 		}
 
 		this.ritualIsReady = true;
+		
+		this.firstPowerLastUseInTicks = 0;
 		return true;
 	}
 
@@ -55,6 +62,8 @@ public class JashinScytheItem extends AbstractSwordItem {
 				ritualEntityUUID = null;
 				ritualIsReady = false;
 			}
+			
+			this.secondPowerLastUseInTicks = 0;
 		}
 		else {
 			return false;
@@ -79,6 +88,16 @@ public class JashinScytheItem extends AbstractSwordItem {
 			ritualEntityUUID = null;
 			ritualIsReady = false;
 		}
+	}
+
+	@Override
+	public boolean canUseFirstPower() {
+		return this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks;
+	}
+
+	@Override
+	public boolean canUseSecondPower() {
+		return this.secondPowerLastUseInTicks >= this.secondPowerCooldownInTicks;
 	}
 
 	@Override
