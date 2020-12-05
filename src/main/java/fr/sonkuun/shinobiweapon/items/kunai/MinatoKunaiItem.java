@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -132,5 +133,17 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 		nbAirBlock = world.getBlockState(pos.south().east()).isSolid() ? nbAirBlock : nbAirBlock + 1;
 
 		return nbAirBlock;
+	}
+
+	@Override
+	public ResourceLocation getFirstPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResourceLocation getSecondPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

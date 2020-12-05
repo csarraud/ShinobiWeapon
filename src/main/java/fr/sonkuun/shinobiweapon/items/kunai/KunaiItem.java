@@ -6,6 +6,7 @@ import fr.sonkuun.shinobiweapon.register.ItemRegister;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class KunaiItem extends AbstractKunaiItem {
@@ -35,5 +36,17 @@ public class KunaiItem extends AbstractKunaiItem {
 	public boolean useSecondPower(PlayerEntity player) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ResourceLocation getFirstPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResourceLocation getSecondPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

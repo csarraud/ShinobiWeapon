@@ -2,9 +2,11 @@ package fr.sonkuun.shinobiweapon.items.sword;
 
 import java.util.UUID;
 
+import fr.sonkuun.shinobiweapon.ShinobiWeapon;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
@@ -124,5 +126,17 @@ public class JashinScytheItem extends AbstractSwordItem {
 	public void playerDamagedLivingEntity(LivingDamageEvent event) {
 		LivingEntity entity = event.getEntityLiving();
 		ritualEntityUUID = entity.getUniqueID();
+	}
+
+	@Override
+	public ResourceLocation getFirstPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResourceLocation getSecondPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

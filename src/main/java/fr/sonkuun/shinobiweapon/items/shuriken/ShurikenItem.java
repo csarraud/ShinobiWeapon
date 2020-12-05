@@ -6,6 +6,7 @@ import fr.sonkuun.shinobiweapon.register.ItemRegister;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class ShurikenItem extends AbstractShurikenItem {
@@ -31,5 +32,17 @@ public class ShurikenItem extends AbstractShurikenItem {
 	@Override
 	public Item getItem() {
 		return ItemRegister.SHURIKEN;
+	}
+
+	@Override
+	public ResourceLocation getFirstPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResourceLocation getSecondPowerHUDTexture() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

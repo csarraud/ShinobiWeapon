@@ -23,6 +23,7 @@ import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
 import fr.sonkuun.shinobiweapon.entity.kunai.KunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.kunai.MinatoKunaiEntity;
 import fr.sonkuun.shinobiweapon.entity.shuriken.ShurikenEntity;
+import fr.sonkuun.shinobiweapon.gui.hud.PowerHUD;
 import fr.sonkuun.shinobiweapon.listener.ShinobiWeaponPowerListener;
 import fr.sonkuun.shinobiweapon.register.EntityTypeRegister;
 import fr.sonkuun.shinobiweapon.register.RegistryHandler;
@@ -49,6 +50,7 @@ public class ShinobiWeapon
 		
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new ShinobiWeaponPowerListener());
+		MinecraftForge.EVENT_BUS.register(new PowerHUD());
 		
 		ShinobiWeaponPowerListener.init();
 		RegistryHandler.init();
