@@ -14,6 +14,12 @@ public interface IPoweredItem {
 	public boolean canUseFirstPower();
 	public boolean canUseSecondPower();
 	
+	public long getFirstPowerCooldownInTicks();
+	public long getSecondPowerCooldownInTicks();
+	
+	public long getFirstPowerLastUseInTicks();
+	public long getSecondPowerLastUseInTicks();
+	
 	public ResourceLocation getFirstPowerHUDTexture();
 	public ResourceLocation getSecondPowerHUDTexture();
 	

@@ -24,7 +24,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 		this.ritualEntityUUID = null;
 		this.ritualIsReady = false;
 		
-		int TICKS_IN_ONE_SECOND = 20;
+		int TICKS_IN_ONE_SECOND = 20 * 2;
 		
 		this.firstPowerCooldownInTicks = 10 * TICKS_IN_ONE_SECOND;
 		this.secondPowerCooldownInTicks = 30 * TICKS_IN_ONE_SECOND;
@@ -93,6 +93,14 @@ public class JashinScytheItem extends AbstractSwordItem {
 	}
 
 	@Override
+	public void updatePowerTicks() {
+		if(this.ritualIsReady && this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks) {
+			this.ritualIsReady = false;
+		}
+		super.updatePowerTicks();
+	}
+
+	@Override
 	public boolean canUseFirstPower() {
 		return this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks;
 	}
@@ -130,8 +138,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 	@Override
 	public ResourceLocation getFirstPowerHUDTexture() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/power/jashin/jashin_ritual.png");
 	}
 
 	@Override

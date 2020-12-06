@@ -31,6 +31,26 @@ public abstract class AbstractSwordItem extends SwordItem implements IPoweredIte
 	}
 
 	@Override
+	public long getFirstPowerCooldownInTicks() {
+		return this.firstPowerCooldownInTicks;
+	}
+
+	@Override
+	public long getSecondPowerCooldownInTicks() {
+		return this.secondPowerCooldownInTicks;
+	}
+
+	@Override
+	public long getFirstPowerLastUseInTicks() {
+		return this.firstPowerLastUseInTicks;
+	}
+
+	@Override
+	public long getSecondPowerLastUseInTicks() {
+		return this.secondPowerLastUseInTicks;
+	}
+
+	@Override
 	public void playerDamagedLivingEntity(LivingDamageEvent event) {
 		// TODO Auto-generated method stub
 		

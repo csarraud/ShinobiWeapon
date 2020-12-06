@@ -39,8 +39,9 @@ public class ShinobiWeaponPowerListener {
 				poweredItem.useSecondPower(event.player);
 			}
 			
-			if(event.side.isServer())
+			if(event.side.isServer()) {
 				poweredItem.updatePowerTicks();
+			}
 		}
 	}
 	
