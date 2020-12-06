@@ -21,7 +21,7 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Find how to inform player that the ritual has started
+- Move the power hud
 - Implement Samehada and other sword like weapons
 - Implement Minato's Kunai craft
 - Implement Jashin Scythe craft
