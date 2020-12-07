@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 
 import fr.sonkuun.shinobiweapon.ShinobiWeapon;
 import fr.sonkuun.shinobiweapon.items.IPoweredItem;
+import net.minecraft.client.MainWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.AbstractGui;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -23,6 +24,7 @@ public class PowerHUD {
 
 	public static final int WIDTH = 256;
 	public static final int HEIGHT = 256;
+	public static final int POWER_SEPARATOR = 64;
 
 	public static final ResourceLocation POWER_SLOT_TEXTURE = new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/slot.png");
 	public static final ResourceLocation COOLDOWN_TEXTURE = new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/power_cooldown.png");
@@ -59,28 +61,25 @@ public class PowerHUD {
 
 	public void drawFirstPowerHUD(IPoweredItem item) {
 		int cooldownInPercent = (int) (item.getFirstPowerLastUseInTicks() * 100 / item.getFirstPowerCooldownInTicks());
-		drawPower(item.getFirstPowerHUDTexture(), cooldownInPercent);
+		drawPower(item.getFirstPowerHUDTexture(), cooldownInPercent, 3);
 	}
 
 	public void drawSecondPowerHUD(IPoweredItem item) {
 		int cooldownInPercent = (int) (item.getSecondPowerLastUseInTicks() * 100 / item.getSecondPowerCooldownInTicks());
-		drawPower(item.getSecondPowerHUDTexture(), cooldownInPercent);
+		drawPower(item.getSecondPowerHUDTexture(), cooldownInPercent, 2);
 	}
 
-	public void drawPowerHUD(ResourceLocation texture, int cooldownInPercent) {
-		RenderSystem.pushMatrix();
-		RenderSystem.enableBlend();
-		drawPower(texture, cooldownInPercent);
-		RenderSystem.popMatrix();
-	}
-
-	public void drawPower(ResourceLocation texture, int cooldownInPercent) {
+	public void drawPower(ResourceLocation texture, int cooldownInPercent, int powerId) {
 		AbstractGui gui = Minecraft.getInstance().ingameGUI;
-		int posX = Minecraft.getInstance().getMainWindow().getWidth() - 64;
-		int posY = Minecraft.getInstance().getMainWindow().getHeight() - 64;
+		MainWindow window = Minecraft.getInstance().getMainWindow();
+		
+		double coef = 0.08D;
+		
+		int posX = (int) (window.getScaledWidth() / coef) - (WIDTH + POWER_SEPARATOR);
+		int posY = (int) (window.getScaledHeight() / coef) - (HEIGHT + POWER_SEPARATOR) * powerId;
 		
 		/* Draw power slot */
-		GL11.glScaled(0.08D, 0.08D, 0.08D);
+		GL11.glScaled(coef, coef, coef);
 		bind(POWER_SLOT_TEXTURE);
 		gui.blit(posX, posY, 0, 0, WIDTH, HEIGHT);
 
@@ -93,7 +92,7 @@ public class PowerHUD {
 			bind(COOLDOWN_TEXTURE);
 			gui.blit(posX, posY + (HEIGHT * cooldownInPercent / 100), 0, 0, WIDTH, HEIGHT - (HEIGHT * cooldownInPercent / 100));
 		}
-
+		
 		GL11.glScaled(12.5D, 12.5D, 12.5D);
 		bind(AbstractGui.GUI_ICONS_LOCATION);
 	}
