@@ -7,6 +7,7 @@ import fr.sonkuun.shinobiweapon.ShinobiWeapon;
 import fr.sonkuun.shinobiweapon.items.kunai.KunaiItem;
 import fr.sonkuun.shinobiweapon.items.kunai.MinatoKunaiItem;
 import fr.sonkuun.shinobiweapon.items.scroll.BlankScrollItem;
+import fr.sonkuun.shinobiweapon.items.scroll.TeleportationSealItem;
 import fr.sonkuun.shinobiweapon.items.shuriken.ShurikenItem;
 import fr.sonkuun.shinobiweapon.items.sword.JashinScytheItem;
 import net.minecraft.item.Item;
@@ -24,6 +25,7 @@ public class ItemRegister {
 	public static final Item SHURIKEN = new ShurikenItem();
 	public static final Item JASHIN_SCYTHE = new JashinScytheItem();
 	public static final Item BLANK_SCROLL = new BlankScrollItem();
+	public static final Item TELEPORTATION_SEAL = new TeleportationSealItem();
 
 	static {
 		KUNAI.setRegistryName(ShinobiWeapon.MODID, "kunai");
@@ -31,12 +33,14 @@ public class ItemRegister {
 		SHURIKEN.setRegistryName(ShinobiWeapon.MODID, "shuriken");
 		JASHIN_SCYTHE.setRegistryName(ShinobiWeapon.MODID, "jashin_scythe");
 		BLANK_SCROLL.setRegistryName(ShinobiWeapon.MODID, "blank_scroll");
+		TELEPORTATION_SEAL.setRegistryName(ShinobiWeapon.MODID, "teleportation_seal");
 
 		ITEMS.add(KUNAI);
 		ITEMS.add(MINATO_KUNAI);
 		ITEMS.add(SHURIKEN);
 		ITEMS.add(JASHIN_SCYTHE);
 		ITEMS.add(BLANK_SCROLL);
+		ITEMS.add(TELEPORTATION_SEAL);
 	}
 
 	public static void init() {

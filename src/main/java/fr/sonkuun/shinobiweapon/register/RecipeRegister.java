@@ -27,6 +27,7 @@ public class RecipeRegister {
 	public static void init() {
 		RECIPE_SERIALIZERS.register("shuriken", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 		RECIPE_SERIALIZERS.register("blank_scroll", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
+		RECIPE_SERIALIZERS.register("teleportation_seal", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 	}
 
 	private static class RecipeType<T extends IRecipe<?>> implements IRecipeType<T> {

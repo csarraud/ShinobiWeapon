@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "   ",
+    "xy "
+  ],
+  "key": {
+    "x": {
+      "item": "shinobiweapon:blank_scroll"
+    },
+    "y": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result": {
+    "item": "shinobiweapon:teleportation_seal",
+    "count": 1
+  }
+}
