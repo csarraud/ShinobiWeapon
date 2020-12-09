@@ -102,12 +102,14 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 	@Override
 	public boolean canUseFirstPower() {
-		return this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks;
+		return this.firstPowerLastUseInTicks >= this.firstPowerCooldownInTicks
+				&& this.ritualEntityUUID != null;
 	}
 
 	@Override
 	public boolean canUseSecondPower() {
-		return this.secondPowerLastUseInTicks >= this.secondPowerCooldownInTicks;
+		return this.secondPowerLastUseInTicks >= this.secondPowerCooldownInTicks
+				&& this.ritualIsReady;
 	}
 
 	@Override
