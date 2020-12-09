@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "xx ",
+    "xx "
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:paper"
+    }
+  },
+  "result": {
+    "item": "shinobiweapon:blank_scroll",
+    "count": 1
+  }
+}
