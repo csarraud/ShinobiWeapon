@@ -21,11 +21,11 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 
 # TO DO
 
-- Move the power hud
 - Implement Samehada and other sword like weapons
 - Implement Minato's Kunai craft
 - Implement Jashin Scythe craft
 - Implement Chakra Blade kunai
+- Create better texture for power HUD
 
 # Fix
 
