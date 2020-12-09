@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "   ",
+    "xy "
+  ],
+  "key": {
+    "x": {
+      "item": "shinobiweapon:kunai"
+    },
+    "y": {
+      "item": "shinobiweapon:teleportation_seal"
+    }
+  },
+  "result": {
+    "item": "shinobiweapon:minato_kunai",
+    "count": 1
+  }
+}

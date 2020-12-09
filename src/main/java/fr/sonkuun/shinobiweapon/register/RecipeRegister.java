@@ -26,6 +26,7 @@ public class RecipeRegister {
 	
 	public static void init() {
 		RECIPE_SERIALIZERS.register("shuriken", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
+		RECIPE_SERIALIZERS.register("minato_kunai", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 		RECIPE_SERIALIZERS.register("blank_scroll", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 		RECIPE_SERIALIZERS.register("teleportation_seal", () -> SHINOBI_WEAPON_RECIPE_SERIALIZER);
 	}
