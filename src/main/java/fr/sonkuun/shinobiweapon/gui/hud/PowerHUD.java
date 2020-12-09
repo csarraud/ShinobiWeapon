@@ -82,13 +82,13 @@ public class PowerHUD {
 		GL11.glScaled(coef, coef, coef);
 		bind(POWER_SLOT_TEXTURE);
 		gui.blit(posX, posY, 0, 0, WIDTH, HEIGHT);
-
+		
 		/* Draw power texture */
 		bind(texture);
 		gui.blit(posX, posY, 0, 0, WIDTH, HEIGHT);
-
+		
 		/* Draw power cooldown */
-		if(cooldownInPercent < 100 && cooldownInPercent > 0) {
+		if(cooldownInPercent <= 100 && cooldownInPercent > 0) {
 			bind(COOLDOWN_TEXTURE);
 			gui.blit(posX, posY + (HEIGHT * cooldownInPercent / 100), 0, 0, WIDTH, HEIGHT - (HEIGHT * cooldownInPercent / 100));
 		}

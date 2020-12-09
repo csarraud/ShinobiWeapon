@@ -143,6 +143,6 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 	@Override
 	public ResourceLocation getSecondPowerHUDTexture() {
-		return new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/power/jashin/jashin_ritual.png");
+		return new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/power/jashin/hara_kiri.png");
 	}
 }
