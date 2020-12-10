@@ -31,6 +31,7 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 - Implement Jashin Scythe craft
 - Implement Chakra Blade kunai
 - Create better texture for power HUD
+- Use NBT Tag to do IPoweredItem functionment no matter if the current item is IPoweredItem
 
 # Fix
 
