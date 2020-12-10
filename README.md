@@ -19,7 +19,6 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 - Seals used to craft some weapons :
     - Teleportation seal
     
-	
 
 - Recipes :
     - Basic Kunai recipe
@@ -36,5 +35,4 @@ This mod add some weapon to Minecraft, inspired by Naruto. These weapons are qui
 # Fix
 
 - Fix the throwable weapon position after impact
-- Fix the render orientation problem when throwable weapon are stuck on block
 - Fix after reloading server kunai doesn't change glowing state but teleport works
