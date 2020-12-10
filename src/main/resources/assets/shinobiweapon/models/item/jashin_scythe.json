@@ -6,6 +6,20 @@
 		"2": "shinobiweapon:entity/jashin_scythe/white",
 		"3": "shinobiweapon:entity/jashin_scythe/dark_red"
 	},
+	"overrides": [
+		{
+			"predicate": {
+				"shinobiweapon:has_blood": 0.0
+			},
+			"model": "shinobiweapon:item/jashin_scythe"
+		},
+		{
+			"predicate": {
+				"shinobiweapon:has_blood": 1.0
+			},
+			"model": "shinobiweapon:item/jashin_scythe_with_blood"
+		}
+	],
 	"elements": [
 		{
 			"from": [7, 0, 7],

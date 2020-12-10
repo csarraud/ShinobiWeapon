@@ -5,8 +5,11 @@ import java.util.UUID;
 import fr.sonkuun.shinobiweapon.ShinobiWeapon;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.IItemPropertyGetter;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
@@ -28,6 +31,22 @@ public class JashinScytheItem extends AbstractSwordItem {
 		
 		this.firstPowerCooldownInTicks = 10 * TICKS_IN_ONE_SECOND;
 		this.secondPowerCooldownInTicks = 30 * TICKS_IN_ONE_SECOND;
+		
+		this.addPropertyOverride(new ResourceLocation(ShinobiWeapon.MODID, "has_blood"), new IItemPropertyGetter() {
+			
+			@Override
+			public float call(ItemStack stack, World world, LivingEntity entity) {
+				
+				if(stack.getItem() instanceof JashinScytheItem) {
+					JashinScytheItem jashinScytheItem = (JashinScytheItem) stack.getItem();
+					
+					if(jashinScytheItem.ritualEntityUUID != null) {
+						return 1.0f;
+					}
+				}
+				return 0.0f;
+			}
+		});
 	}
 
 	@Override
