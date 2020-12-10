@@ -1,5 +1,6 @@
 package fr.sonkuun.shinobiweapon.items.kunai;
 
+import fr.sonkuun.shinobiweapon.ShinobiWeapon;
 import fr.sonkuun.shinobiweapon.capability.CapabilityShinobiWeapon;
 import fr.sonkuun.shinobiweapon.capability.ShinobiWeaponData;
 import fr.sonkuun.shinobiweapon.entity.kunai.AbstractKunaiEntity;
@@ -137,8 +138,7 @@ public class MinatoKunaiItem extends AbstractKunaiItem {
 
 	@Override
 	public ResourceLocation getFirstPowerHUDTexture() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResourceLocation(ShinobiWeapon.MODID, "textures/hud/power/minato_kunai/teleportation.png");
 	}
 
 	@Override
