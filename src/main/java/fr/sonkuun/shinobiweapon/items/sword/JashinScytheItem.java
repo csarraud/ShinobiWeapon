@@ -11,6 +11,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 public class JashinScytheItem extends AbstractSwordItem {
@@ -26,20 +28,21 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 		this.ritualEntityUUID = null;
 		this.ritualIsReady = false;
-		
+
 		int TICKS_IN_ONE_SECOND = 20 * 2;
-		
+
 		this.firstPowerCooldownInTicks = 10 * TICKS_IN_ONE_SECOND;
 		this.secondPowerCooldownInTicks = 30 * TICKS_IN_ONE_SECOND;
-		
+
 		this.addPropertyOverride(new ResourceLocation(ShinobiWeapon.MODID, "has_blood"), new IItemPropertyGetter() {
 			
+			@OnlyIn(Dist.CLIENT)
 			@Override
 			public float call(ItemStack stack, World world, LivingEntity entity) {
-				
+
 				if(stack.getItem() instanceof JashinScytheItem) {
 					JashinScytheItem jashinScytheItem = (JashinScytheItem) stack.getItem();
-					
+
 					if(jashinScytheItem.ritualEntityUUID != null) {
 						return 1.0f;
 					}
@@ -56,7 +59,7 @@ public class JashinScytheItem extends AbstractSwordItem {
 		}
 
 		this.ritualIsReady = true;
-		
+
 		this.firstPowerLastUseInTicks = 0;
 		return true;
 	}
@@ -66,14 +69,14 @@ public class JashinScytheItem extends AbstractSwordItem {
 		if(this.ritualEntityUUID == null || !(player.world instanceof ServerWorld)) {
 			return false;
 		}
-		
+
 		ServerWorld world = (ServerWorld) player.world;
 		LivingEntity ritualEntity = (LivingEntity) world.getEntityByUuid(ritualEntityUUID);
 
 		if(ritualEntity != null && player.getHealth() > (player.getMaxHealth() / 10)) {
 			/* After using this power, the player will be set to 10% of his max health */
 			float healthAfter = player.getMaxHealth() / 10;
-			
+
 			float damage = (player.getHealth() - healthAfter) * 2;
 
 			ritualEntity.attackEntityFrom(DamageSource.MAGIC, damage);
@@ -83,13 +86,13 @@ public class JashinScytheItem extends AbstractSwordItem {
 				ritualEntityUUID = null;
 				ritualIsReady = false;
 			}
-			
+
 			this.secondPowerLastUseInTicks = 0;
 		}
 		else {
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -150,13 +153,13 @@ public class JashinScytheItem extends AbstractSwordItem {
 
 		proceedRitual(event);
 	}
-	
+
 	@Override
 	public void playerDamagedLivingEntity(LivingDamageEvent event) {
 		LivingEntity entity = event.getEntityLiving();
 		ritualEntityUUID = entity.getUniqueID();
-		
-		if(!entity.isAlive()) {
+
+		if(entity.getHealth() <= event.getAmount()) {
 			ritualEntityUUID = null;
 			ritualIsReady = false;
 		}
